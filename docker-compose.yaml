@@ -1,7 +1,6 @@
 version: "3.7"
 services:
   cassandra-seed:
-    container_name: cassandra-seed-node
     image: cassandra:3.11.0
     ports:
       - "9042:9042"   # Native transport
@@ -12,7 +11,7 @@ services:
     image: cassandra:3.11.0
     command: /bin/bash -c "echo 'Waiting for seed node' && sleep 30 && /docker-entrypoint.sh cassandra -f"
     environment:
-      - "CASSANDRA_SEEDS=cassandra-seed-node"
+      - "CASSANDRA_SEEDS=cassandra-seed"
     depends_on:
       - "cassandra-seed"
 
@@ -22,6 +21,6 @@ services:
     image: cassandra:3.11.0
     command: /bin/bash -c "echo 'Waiting for seed node' && sleep 80 && /docker-entrypoint.sh cassandra -f"
     environment:
-      - "CASSANDRA_SEEDS=cassandra-seed-node"
+      - "CASSANDRA_SEEDS=cassandra-seed"
     depends_on:
       - "cassandra-seed"

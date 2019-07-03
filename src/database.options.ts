@@ -6,7 +6,7 @@ export default {
         contactPoints: ["localhost"],
         keyspace: "test",
         protocolOptions: {
-            port: 9042,
+            port: 9042, 
         },
         queryOptions: {
             consistency: 1,
